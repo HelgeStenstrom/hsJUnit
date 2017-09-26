@@ -10,10 +10,6 @@ public class WasRun extends TestCase{
         // this.name = name;
     }
 
-    public void run() {
-        this.testMethod();
-    }
-
     public void  testMethod() {
         //wasRunSub = true;
         wasRun = true;

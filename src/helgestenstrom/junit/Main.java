@@ -2,6 +2,8 @@ package helgestenstrom.junit;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Main {
@@ -15,13 +17,6 @@ public class Main {
         // findMethodsThatAreTests();
     }
 
-//    private static void testThatRunInWasRunMarksThatItWasRun() {
-//        WasRun test = new WasRun("testMethod");
-//        assertThat(!test.wasRunSub);
-//        test.run();
-//        assertThat(test.wasRunSub);
-//    }
-//
     private static void testCanBeTestCase() {
         TestCase test = new WasRun("testMethod");
         assertThat(!test.wasRun);
@@ -31,13 +26,31 @@ public class Main {
 
     private static void classHasAName() {
         TestCase test = new WasRun("testMethod");
-        assertThat("testMethod".equals(test.nameInBaseClass));
+        assertThat("testMethod".equals(test.name));
     }
 
     private static void callMethodByName() {
         TestCase test = new WasRun("testMethod");
         assertThat(!test.wasRun);
-        test.runByName();
+        Method toRun = null;
+        try {
+            toRun = test.getClass().getDeclaredMethod(test.name, new Class[0]);
+
+        }
+        catch (NoSuchMethodException e) {
+            System.out.println("Hittade inte en sådan metod");
+        }
+
+        try {
+            toRun.invoke(test, new Class[0]);
+        }
+        catch (InvocationTargetException e) {
+            System.out.println("InvocationTargetException");
+        }
+        catch (IllegalAccessException e) {
+            System.out.println("IllegalAccessException");
+        }
+
         assertThat(test.wasRun);
         System.out.print(".");
     }

@@ -5,10 +5,10 @@ import java.lang.reflect.Method;
 
 public class TestCase {
     boolean wasRun;
-    String nameInBaseClass;
+    String name;
 
     public TestCase(String name) {
-        this.nameInBaseClass = name;
+        this.name = name;
     }
 
     void runParent(String name) {
@@ -19,10 +19,12 @@ public class TestCase {
         // return new String[["hej"]];
     }
 
-    void runByName() {
+    // void run() {}
+
+    public void run() {
         Method toRun = null;
         try {
-            toRun = getClass().getDeclaredMethod(this.nameInBaseClass, new Class[0]);
+            toRun = getClass().getDeclaredMethod(this.name, new Class[0]);
 
         }
         catch (NoSuchMethodException e) {
@@ -40,5 +42,4 @@ public class TestCase {
         }
 
     }
-    void run() {}
 }
