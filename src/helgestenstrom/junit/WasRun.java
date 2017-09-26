@@ -2,7 +2,7 @@ package helgestenstrom.junit;
 
 public class WasRun extends TestCase{
 
-    boolean wasRun = false;
+    //boolean wasRunSub = false;
     // String name;
 
     public WasRun(String name) {
@@ -15,7 +15,7 @@ public class WasRun extends TestCase{
     }
 
     public void  testMethod() {
+        //wasRunSub = true;
         wasRun = true;
-        wasRunParent = true;
     }
 }

@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class TestCase {
-    boolean wasRunParent;
+    boolean wasRun;
     String nameInBaseClass;
 
     public TestCase(String name) {
@@ -12,6 +12,11 @@ public class TestCase {
     }
 
     void runParent(String name) {
+    }
+
+    public void methodsOfTest() {
+        Method[] myMethods = getClass().getDeclaredMethods();
+        // return new String[["hej"]];
     }
 
     void runByName() {

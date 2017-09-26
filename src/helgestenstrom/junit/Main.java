@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        testThatRunInWasRunMarksThatItWasRun();
+        //testThatRunInWasRunMarksThatItWasRun();
         testCanBeTestCase();
         classHasAName();
         callMethodByName();
@@ -15,18 +15,18 @@ public class Main {
         // findMethodsThatAreTests();
     }
 
-    private static void testThatRunInWasRunMarksThatItWasRun() {
-        WasRun test = new WasRun("testMethod");
+//    private static void testThatRunInWasRunMarksThatItWasRun() {
+//        WasRun test = new WasRun("testMethod");
+//        assertThat(!test.wasRunSub);
+//        test.run();
+//        assertThat(test.wasRunSub);
+//    }
+//
+    private static void testCanBeTestCase() {
+        TestCase test = new WasRun("testMethod");
         assertThat(!test.wasRun);
         test.run();
         assertThat(test.wasRun);
-    }
-
-    private static void testCanBeTestCase() {
-        TestCase test = new WasRun("testMethod");
-        assertThat(!test.wasRunParent);
-        test.run();
-        assertThat(test.wasRunParent);
     }
 
     private static void classHasAName() {
@@ -36,9 +36,9 @@ public class Main {
 
     private static void callMethodByName() {
         TestCase test = new WasRun("testMethod");
-        assertThat(!test.wasRunParent);
+        assertThat(!test.wasRun);
         test.runByName();
-        assertThat(test.wasRunParent);
+        assertThat(test.wasRun);
         System.out.print(".");
     }
 
