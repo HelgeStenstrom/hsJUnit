@@ -2,6 +2,7 @@ package helgestenstrom.junit;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ public class Main {
         callMethodByName();
         compareStringLists();
         // findMethodsThatAreTests();
+        TestCase tct = new TestCaseTest("testRunning");
+        tct.run();
     }
 
     private static void testCanBeTestCase() {
@@ -32,25 +35,7 @@ public class Main {
     private static void callMethodByName() {
         TestCase test = new WasRun("testMethod");
         assertThat(!test.wasRun);
-        Method toRun = null;
-        try {
-            toRun = test.getClass().getDeclaredMethod(test.name, new Class[0]);
-
-        }
-        catch (NoSuchMethodException e) {
-            System.out.println("Hittade inte en sådan metod");
-        }
-
-        try {
-            toRun.invoke(test, new Class[0]);
-        }
-        catch (InvocationTargetException e) {
-            System.out.println("InvocationTargetException");
-        }
-        catch (IllegalAccessException e) {
-            System.out.println("IllegalAccessException");
-        }
-
+        test.run();
         assertThat(test.wasRun);
         System.out.print(".");
     }

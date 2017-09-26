@@ -42,4 +42,11 @@ public class TestCase {
         }
 
     }
+
+    protected static void assertThat(boolean b) {
+        if (!b) {
+            throw new AssertionError("Not true ");
+        }
+    }
+
 }
