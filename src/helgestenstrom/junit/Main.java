@@ -2,9 +2,6 @@ package helgestenstrom.junit;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Main {
@@ -16,8 +13,12 @@ public class Main {
         callMethodByName();
         compareStringLists();
         // findMethodsThatAreTests();
+
         TestCase tct = new TestCaseTest("testRunning");
         tct.run();
+
+        TestCase tws = new TestCaseTest("testSetUp");
+        tws.run();
     }
 
     private static void testCanBeTestCase() {
@@ -47,9 +48,9 @@ public class Main {
         l1.add("Two");
         l1.add("Three");
         l2.addAll(l1);
-        assertThat(l1.equals(l1));
         assertThat(l1.equals(l2));
         l2.add("Four");
+        assertThat( ! l1.equals(l2));
         assertThat(l1.contains("Two"));
         assertThat(!(l1.contains("Four")));
         assertThat(l2.contains("Four"));

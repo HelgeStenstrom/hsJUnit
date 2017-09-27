@@ -5,9 +5,10 @@ import java.lang.reflect.Method;
 
 public class TestCase {
     boolean wasRun;
+    boolean wasSetup;
     String name;
 
-    public TestCase(String name) {
+    TestCase(String name) {
         this.name = name;
     }
 
@@ -19,10 +20,11 @@ public class TestCase {
         // return new String[["hej"]];
     }
 
-    // void run() {}
+    public void setUp() {}
 
-    public void run() {
+    void run() {
         Method toRun = null;
+        setUp();
         try {
             toRun = getClass().getDeclaredMethod(this.name, new Class[0]);
 
@@ -43,7 +45,7 @@ public class TestCase {
 
     }
 
-    protected static void assertThat(boolean b) {
+    static void assertThat(boolean b) {
         if (!b) {
             throw new AssertionError("Not true ");
         }

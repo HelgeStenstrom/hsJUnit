@@ -3,7 +3,7 @@ package helgestenstrom.junit;
 public class TestCaseTest extends TestCase {
 
 
-    public TestCaseTest(String name) {
+    TestCaseTest(String name) {
         super(name);
     }
 
@@ -12,5 +12,12 @@ public class TestCaseTest extends TestCase {
         assertThat(!test.wasRun);
         test.run();
         assertThat(test.wasRun);
+    }
+
+    public static void testSetUp() {
+        TestCase test = new WasRun("testMethod");
+        assertThat((!test.wasSetup));
+        test.run();
+        assertThat(test.wasSetup);
     }
 }
