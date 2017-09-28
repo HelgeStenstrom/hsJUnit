@@ -42,10 +42,7 @@ public class TestCase {
             toRun.invoke(this, new Class[0]);
         }
         catch (InvocationTargetException e) {
-            e.printStackTrace();
-            // https://stackoverflow.com/questions/6020719/what-could-cause-java-lang-reflect-invocationtargetexception
-            // Done: Make sure the stack trace is printed.
-            // TODO: Understand exception hierarchy and how AssertionError is related to InvocationTargetException
+            e.getCause().printStackTrace();
         }
         catch (IllegalAccessException e) {
             System.out.println("IllegalAccessException");
@@ -53,9 +50,12 @@ public class TestCase {
     }
 
     static void assertThat(boolean b) {
-        assert b;
+        assertThat(b, "Not true.");
+    }
+
+    static void assertThat(boolean b, String comment) {
         if (!b) {
-            throw new AssertionError("Not true ");
+            throw new AssertionError(comment);
         }
     }
 

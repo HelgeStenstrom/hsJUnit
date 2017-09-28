@@ -63,7 +63,6 @@ public class Main {
         assertThat(l2.contains("Four"));
         assertThat(l1.size() == 3);
         assertThat(l2.size() == 4);
-        // assert false;
     }
 
     private static void findMethodsThatAreTests() {
@@ -75,7 +74,6 @@ public class Main {
     }
 
     private static void assertThat(boolean b) {
-        assert b; // TODO: remove this when I understand stack trace and exceptions.
         if (!b) {
             throw new AssertionError("Not true ");
         }
