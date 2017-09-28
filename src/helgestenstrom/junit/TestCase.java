@@ -26,7 +26,6 @@ public class TestCase {
         setUp();
         try {
             toRun = getClass().getDeclaredMethod(this.name, new Class[0]);
-
         }
         catch (NoSuchMethodException e) {
             System.out.println("Hittade inte en sådan metod");
@@ -36,7 +35,9 @@ public class TestCase {
             toRun.invoke(this, new Class[0]);
         }
         catch (InvocationTargetException e) {
-            System.out.println("InvocationTargetException");
+            System.out.println("InvocationTargetException faktiskt.");
+            // TODO: Make sure the stack trace is printed.
+            // TODO: Understand exception hierarchy and how AssertionError is related to InvocationTargetException
         }
         catch (IllegalAccessException e) {
             System.out.println("IllegalAccessException");

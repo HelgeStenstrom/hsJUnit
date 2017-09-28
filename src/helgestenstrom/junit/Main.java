@@ -63,6 +63,7 @@ public class Main {
         assertThat(l2.contains("Four"));
         assertThat(l1.size() == 3);
         assertThat(l2.size() == 4);
+        // assert false;
     }
 
     private static void findMethodsThatAreTests() {
@@ -71,7 +72,6 @@ public class Main {
         // TODO: lista över namn, ska jämföras med list från testFinder
 
         throw new NotImplementedException();
-
     }
 
     private static void assertThat(boolean b) {

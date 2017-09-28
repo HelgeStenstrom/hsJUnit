@@ -13,6 +13,6 @@ public class TestCaseTest extends TestCase {
     public void testTemplateMethod() {
         TestCase test = new WasRun("testMethod");
         test.run();
-        assertThat("setUp testMethod ".equals(test.log));
+        assertThat("setUp testMethod tearDown ".equals(test.log));
     }
 }
