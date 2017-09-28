@@ -26,6 +26,9 @@ public class Main {
 
         TestCase tws = new TestCaseTest("testTemplateMethod");
         tws.run();
+
+        //TestCase t = new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails");
+        //t.run();
     }
 
     private static void testCanBeTestCase() {

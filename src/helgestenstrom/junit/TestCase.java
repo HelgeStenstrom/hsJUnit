@@ -38,11 +38,13 @@ public class TestCase {
             System.out.println("Hittade inte en sådan metod");
         }
 
+        // TODO: lär mig hur en Exception kan stoppas från att komma igenom, men ändå loggas.
         try {
             toRun.invoke(this, new Class[0]);
         }
         catch (InvocationTargetException e) {
             e.getCause().printStackTrace();
+            // throw e.getCause();
         }
         catch (IllegalAccessException e) {
             System.out.println("IllegalAccessException");
