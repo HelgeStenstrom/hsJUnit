@@ -21,9 +21,16 @@ public class TestCase {
 
     public void setUp() {}
 
+    public void tearDown() {}
+
     void run() {
         Method toRun = null;
         setUp();
+        runMethod(toRun);
+        tearDown();
+    }
+
+    private void runMethod(Method toRun) {
         try {
             toRun = getClass().getDeclaredMethod(this.name, new Class[0]);
         }
@@ -43,7 +50,6 @@ public class TestCase {
         catch (IllegalAccessException e) {
             System.out.println("IllegalAccessException");
         }
-
     }
 
     static void assertThat(boolean b) {
