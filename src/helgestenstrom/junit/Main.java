@@ -4,6 +4,15 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
+// DONE: Invoke test method
+// DONE: Invoke setUp first
+// TODO: Invoke tearDown afterward
+// TODO: Invoke tearDown even if the test method fails
+// TODO: Run multiple tests
+// TODO: Report collected results
+// DONE: Log string in WasRun
+
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,10 +23,8 @@ public class Main {
         compareStringLists();
         // findMethodsThatAreTests();
 
-        TestCase tct = new TestCaseTest("testRunning");
-        tct.run();
 
-        TestCase tws = new TestCaseTest("testSetUp");
+        TestCase tws = new TestCaseTest("testTemplateMethod");
         tws.run();
     }
 

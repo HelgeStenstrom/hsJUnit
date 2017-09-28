@@ -8,11 +8,12 @@ public class WasRun extends TestCase{
     }
 
     public void setUp() {
-        wasSetup = true;
         wasRun = false;
+        log = "setUp ";
     }
 
     public void  testMethod() {
         wasRun = true;
+        log += "testMethod ";
     }
 }

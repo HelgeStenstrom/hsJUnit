@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 
 public class TestCase {
     boolean wasRun;
-    boolean wasSetup;
     String name;
+    String log;
 
     TestCase(String name) {
         this.name = name;
@@ -17,7 +17,6 @@ public class TestCase {
 
     public void methodsOfTest() {
         Method[] myMethods = getClass().getDeclaredMethods();
-        // return new String[["hej"]];
     }
 
     public void setUp() {}
