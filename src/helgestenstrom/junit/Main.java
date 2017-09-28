@@ -75,6 +75,7 @@ public class Main {
     }
 
     private static void assertThat(boolean b) {
+        assert b; // TODO: remove this when I understand stack trace and exceptions.
         if (!b) {
             throw new AssertionError("Not true ");
         }
