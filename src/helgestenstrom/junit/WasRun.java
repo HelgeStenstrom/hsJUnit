@@ -20,4 +20,8 @@ public class WasRun extends TestCase{
         wasRun = true;
         log += "testMethod ";
     }
+
+    public void testBrokenMethod() throws Exception {
+        throw new Exception();
+    }
 }

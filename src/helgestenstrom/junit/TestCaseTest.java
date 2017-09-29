@@ -21,4 +21,11 @@ public class TestCaseTest extends TestCase {
         TestResult result = test.run();
         assertThat("1 run, 0 failed".equals(result.summary()));
     }
+
+    public void testFailedResult() {
+        TestCase test = new WasRun("testBrokenMethod");
+        TestResult result = test.run();
+        // TODO: an exception is thrown. Handle it! read page 107.
+        assertThat("1 run, 1 failed".equals(result.summary()));
+    }
 }

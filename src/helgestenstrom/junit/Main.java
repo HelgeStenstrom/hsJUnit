@@ -30,6 +30,9 @@ public class Main {
         TestCase t = new TestCaseTest("testResult");
         t.run();
 
+        t = new TestCaseTest("testFailedResult");
+        t.run();
+
         //TestCase t = new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails");
         //t.run();
     }
