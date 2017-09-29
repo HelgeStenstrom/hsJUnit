@@ -23,11 +23,12 @@ public class TestCase {
 
     public void tearDown() {}
 
-    void run() {
+    TestResult run() {
         Method toRun = null;
         setUp();
         runMethod(toRun);
         tearDown();
+        return new TestResult();
     }
 
     private void runMethod(Method toRun) {
