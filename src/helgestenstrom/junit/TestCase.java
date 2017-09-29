@@ -24,14 +24,16 @@ public class TestCase {
     public void tearDown() {}
 
     TestResult run() {
-        Method toRun = null;
+        TestResult result = new TestResult();
+        result.testStarted();
         setUp();
-        runMethod(toRun);
+        runMethod();
         tearDown();
-        return new TestResult();
+        return result;
     }
 
-    private void runMethod(Method toRun) {
+    private void runMethod() {
+        Method toRun = null;
         try {
             toRun = getClass().getDeclaredMethod(this.name, new Class[0]);
         }
