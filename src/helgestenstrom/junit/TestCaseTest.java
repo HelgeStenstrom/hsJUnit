@@ -28,4 +28,11 @@ public class TestCaseTest extends TestCase {
         // TODO: an exception is thrown. Handle it! read page 107.
         assertThat("1 run, 1 failed".equals(result.summary()));
     }
+
+    public void testFailedResultFormatting() {
+        TestResult result = new TestResult();
+        result.testStarted();
+        result.testFailed();
+        assertThat("1 run, 1 failed".equals(result.summary()), "testFailedResultFormatting");
+    }
 }
