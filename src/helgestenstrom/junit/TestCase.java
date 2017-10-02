@@ -37,7 +37,20 @@ public class TestCase {
         }
         tearDown();
         return result;
+    }
 
+    TestResult run(TestResult result) {
+        result = new TestResult();
+        result.testStarted();
+        setUp();
+        try {
+            runMethod();
+        }
+        catch (Throwable e) {
+            result.testFailed();
+        }
+        tearDown();
+        return result;
     }
 
     private void runMethod() throws Throwable {

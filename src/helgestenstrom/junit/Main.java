@@ -1,9 +1,5 @@
 package helgestenstrom.junit;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.ArrayList;
-
 // Done: Invoke test method
 // Done: Invoke setUp first
 // Done: Invoke tearDown afterward
@@ -27,6 +23,13 @@ public class Main {
         // new TestCaseTest("testSuite").run();
         System.out.println(new TestCaseTest("testSuite").run().summary());
         // new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails").run();
+
+        TestResult result = new TestResult();
+        result = new TestCaseTest("testCanBeTestCase").run(result);
+        result = new TestCaseTest("classHasAName").run(result);
+        result = new TestCaseTest("callMethodByName").run(result);
+        result = new TestCaseTest("testTemplateMethod").run(result);
+        System.out.printf("run: result = %s \n", result.summary());
     }
 
 }
