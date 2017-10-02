@@ -27,7 +27,6 @@ public class TestCaseTest extends TestCase {
         assertThat(!test.wasRun);
         test.run();
         assertThat(test.wasRun);
-        System.out.print(".");
     }
 
 
@@ -56,5 +55,14 @@ public class TestCaseTest extends TestCase {
         TestCase test = new WasRun("testBrokenMethod");
         TestResult result = test.run();
         assertThat("1 run, 1 failed".equals(result.summary()));
+    }
+
+    public void testSuite() {
+        TestSuite suite = new TestSuite();
+        suite.add(new WasRun("testMethod"));
+        suite.add(new WasRun("testBrokenMethod"));
+        TestResult result = suite.run();
+        assertThat("2 run, 1 failed".equals(result.summary()));
+
     }
 }
