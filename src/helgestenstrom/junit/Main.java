@@ -9,7 +9,7 @@ import java.util.ArrayList;
 // Done: Invoke tearDown afterward
 // TODO: Invoke tearDown even if the test method fails
 // TODO: Run multiple tests
-// TODO: Report collected results
+// Done: Report collected results
 // Done: Log string in WasRun
 // TODO: Catch and report setUp errors
 
