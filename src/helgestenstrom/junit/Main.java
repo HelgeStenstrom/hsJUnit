@@ -11,6 +11,7 @@ import java.util.ArrayList;
 // TODO: Run multiple tests
 // TODO: Report collected results
 // Done: Log string in WasRun
+// TODO: Catch and report setUp errors
 
 
 public class Main {
@@ -19,11 +20,10 @@ public class Main {
         new TestCaseTest("testCanBeTestCase").run();
         new TestCaseTest("classHasAName").run();
         new TestCaseTest("callMethodByName").run();
-
         new TestCaseTest("testTemplateMethod").run();
         new TestCaseTest("testResult").run();
-        new TestCaseTest("testFailedResult").run();
         new TestCaseTest("testFailedResultFormatting").run();
+        new TestCaseTest("testFailedResult").run();
         // new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails").run();
     }
 
