@@ -27,9 +27,15 @@ public class TestCase {
         TestResult result = new TestResult();
         result.testStarted();
         setUp();
-        runMethod();
+        try {
+            runMethod();
+        }
+        catch (Exception e) {
+            result.testFailed();
+        }
         tearDown();
         return result;
+
     }
 
     private void runMethod() {
@@ -45,12 +51,16 @@ public class TestCase {
         try {
             toRun.invoke(this, new Class[0]);
         }
-        catch (InvocationTargetException e) {
-            e.getCause().printStackTrace();
-            // throw e.getCause();
-        }
         catch (IllegalAccessException e) {
             System.out.println("IllegalAccessException");
+        }
+        catch (InvocationTargetException e) {
+            Throwable cause = e.getCause();
+            e.getCause().printStackTrace();
+            System.out.println("runMethod has got an InvocationTargetException");
+            System.out.println(e.getCause().toString());
+            System.out.println();
+            // throw e.getCause();
         }
     }
 
