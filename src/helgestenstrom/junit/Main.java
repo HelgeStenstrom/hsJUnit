@@ -17,13 +17,15 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        new TestCaseTest("testCanBeTestCase").run();
-        new TestCaseTest("classHasAName").run();
-        new TestCaseTest("callMethodByName").run();
-        new TestCaseTest("testTemplateMethod").run();
-        new TestCaseTest("testResult").run();
-        new TestCaseTest("testFailedResultFormatting").run();
-        new TestCaseTest("testFailedResult").run();
+        System.out.println(new TestCaseTest("testCanBeTestCase").run().summary());
+        System.out.println(new TestCaseTest("classHasAName").run().summary());
+        System.out.println(new TestCaseTest("callMethodByName").run().summary());
+        System.out.println(new TestCaseTest("testTemplateMethod").run().summary());
+        System.out.println(new TestCaseTest("testResult").run().summary());
+        System.out.println(new TestCaseTest("testFailedResultFormatting").run().summary());
+        System.out.println(new TestCaseTest("testFailedResult").run().summary());
+        // new TestCaseTest("testSuite").run();
+        System.out.println(new TestCaseTest("testSuite").run().summary());
         // new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails").run();
     }
 
