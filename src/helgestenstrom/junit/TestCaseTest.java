@@ -10,6 +10,29 @@ public class TestCaseTest extends TestCase {
     public void setUp() {
     }
 
+    public void testCanBeTestCase() {
+        TestCase test = new WasRun("testMethod");
+        assertThat(!test.wasRun);
+        test.run();
+        assertThat(test.wasRun);
+    }
+
+    public void classHasAName() {
+        TestCase test = new WasRun("testMethod");
+        assertThat("testMethod".equals(test.name));
+    }
+
+    public void callMethodByName() {
+        TestCase test = new WasRun("testMethod");
+        assertThat(!test.wasRun);
+        test.run();
+        assertThat(test.wasRun);
+        System.out.print(".");
+    }
+
+
+
+
     public void testTemplateMethod() {
         TestCase test = new WasRun("testMethod");
         test.run();
