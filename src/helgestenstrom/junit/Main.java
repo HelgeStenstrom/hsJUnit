@@ -31,7 +31,7 @@ public class Main {
         t.run();
 
         t = new TestCaseTest("testFailedResult");
-        // t.run();
+        t.run();
 
         t = new TestCaseTest("testFailedResultFormatting");
         t.run();
