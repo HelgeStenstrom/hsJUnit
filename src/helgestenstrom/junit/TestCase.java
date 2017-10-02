@@ -1,5 +1,7 @@
 package helgestenstrom.junit;
 
+import sun.reflect.annotation.ExceptionProxy;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -30,7 +32,7 @@ public class TestCase {
         try {
             runMethod();
         }
-        catch (Exception e) {
+        catch (Throwable e) {
             result.testFailed();
         }
         tearDown();
@@ -38,7 +40,7 @@ public class TestCase {
 
     }
 
-    private void runMethod() {
+    private void runMethod() throws Throwable {
         Method toRun = null;
         try {
             toRun = getClass().getDeclaredMethod(this.name, new Class[0]);
@@ -47,20 +49,17 @@ public class TestCase {
             System.out.println("Hittade inte en sådan metod");
         }
 
-        // TODO: lär mig hur en Exception kan stoppas från att komma igenom, men ändå loggas.
         try {
             toRun.invoke(this, new Class[0]);
         }
         catch (IllegalAccessException e) {
+            // We couldn't even start the execution of the invoked method.
             System.out.println("IllegalAccessException");
         }
         catch (InvocationTargetException e) {
+            // We could invoke the method, but it threw an exception. We need to deal with it.
             Throwable cause = e.getCause();
-            e.getCause().printStackTrace();
-            System.out.println("runMethod has got an InvocationTargetException");
-            System.out.println(e.getCause().toString());
-            System.out.println();
-            // throw e.getCause();
+            throw cause;
         }
     }
 
