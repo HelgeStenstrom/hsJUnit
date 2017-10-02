@@ -24,20 +24,11 @@ public class Main {
         // findMethodsThatAreTests();
 
 
-        TestCase tws = new TestCaseTest("testTemplateMethod");
-        tws.run();
-
-        TestCase t = new TestCaseTest("testResult");
-        t.run();
-
-        t = new TestCaseTest("testFailedResult");
-        // t.run();
-
-        t = new TestCaseTest("testFailedResultFormatting");
-        t.run();
-
-        //TestCase t = new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails");
-        //t.run();
+        new TestCaseTest("testTemplateMethod").run();
+        new TestCaseTest("testResult").run();
+        //new TestCaseTest("testFailedResult").run();
+        new TestCaseTest("testFailedResultFormatting").run();
+        // new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails").run();
     }
 
     private static void testCanBeTestCase() {
