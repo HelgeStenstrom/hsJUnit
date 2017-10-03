@@ -13,8 +13,8 @@ public class TestSuite {
     public TestResult run() {
         TestResult result = new TestResult();
         for (TestCase test: tests) {
-            // test.run(result);
+            test.run(result);
         }
-        return new TestResult();
+        return result;
     }
 }

@@ -13,7 +13,7 @@ public class TestCaseTest extends TestCase {
     public void testCanBeTestCase() {
         TestCase test = new WasRun("testMethod");
         assertThat(!test.wasRun);
-        test.run();
+        test.run(new TestResult());
         assertThat(test.wasRun);
     }
 
@@ -25,7 +25,7 @@ public class TestCaseTest extends TestCase {
     public void callMethodByName() {
         TestCase test = new WasRun("testMethod");
         assertThat(!test.wasRun);
-        test.run();
+        test.run(new TestResult());
         assertThat(test.wasRun);
     }
 
@@ -34,13 +34,14 @@ public class TestCaseTest extends TestCase {
 
     public void testTemplateMethod() {
         TestCase test = new WasRun("testMethod");
-        test.run();
+        test.run(new TestResult());
         assertThat("setUp testMethod tearDown ".equals(test.log), "Log of called methods.");
     }
 
     public void testResult() {
         TestCase test = new WasRun(("testMethod"));
-        TestResult result = test.run();
+        TestResult result = new TestResult();
+        test.run(result);
         assertThat("1 run, 0 failed".equals(result.summary()));
     }
 
@@ -53,7 +54,8 @@ public class TestCaseTest extends TestCase {
 
     public void testFailedResult() {
         TestCase test = new WasRun("testBrokenMethod");
-        TestResult result = test.run();
+        TestResult result = new TestResult();
+        test.run(result);
         assertThat("1 run, 1 failed".equals(result.summary()));
     }
 
@@ -62,7 +64,15 @@ public class TestCaseTest extends TestCase {
         suite.add(new WasRun("testMethod"));
         suite.add(new WasRun("testBrokenMethod"));
         TestResult result = suite.run();
-        assertThat("2 run, 1 failed".equals(result.summary()));
-
+        assertThat("2 run, 1 failed".equals(result.summary()), "running one passing, one failing test.");
     }
+
+    public void testPassingSuite() {
+        TestSuite suite = new TestSuite();
+        suite.add(new WasRun("testMethod"));
+        suite.add(new WasRun("testMethod"));
+        TestResult result = suite.run();
+        assertThat("2 run, 0 failed".equals(result.summary()), "running two passing tests.");
+    }
+
 }

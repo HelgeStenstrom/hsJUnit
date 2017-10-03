@@ -9,27 +9,27 @@ package helgestenstrom.junit;
 // Done: Log string in WasRun
 // TODO: Catch and report setUp errors
 
+// TODO: Only print stack trace when there is a problem.
+// TODO: Run passing tests silently
+
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(new TestCaseTest("testCanBeTestCase").run().summary());
-        System.out.println(new TestCaseTest("classHasAName").run().summary());
-        System.out.println(new TestCaseTest("callMethodByName").run().summary());
-        System.out.println(new TestCaseTest("testTemplateMethod").run().summary());
-        System.out.println(new TestCaseTest("testResult").run().summary());
-        System.out.println(new TestCaseTest("testFailedResultFormatting").run().summary());
-        System.out.println(new TestCaseTest("testFailedResult").run().summary());
-        // new TestCaseTest("testSuite").run();
-        System.out.println(new TestCaseTest("testSuite").run().summary());
-        // new TestCaseTest("testThatTearDownIsRunEvenIfMethodFails").run();
-
-        TestResult result = new TestResult();
-        result = new TestCaseTest("testCanBeTestCase").run(result);
-        result = new TestCaseTest("classHasAName").run(result);
-        result = new TestCaseTest("callMethodByName").run(result);
-        result = new TestCaseTest("testTemplateMethod").run(result);
-        System.out.printf("run: result = %s \n", result.summary());
+        System.out.println(allTests().run().summary());
     }
 
+    static TestSuite allTests() {
+        TestSuite suite = new TestSuite();
+        suite.add(new TestCaseTest("testCanBeTestCase"));
+        suite.add(new TestCaseTest("classHasAName"));
+        suite.add(new TestCaseTest("callMethodByName"));
+        suite.add(new TestCaseTest("testTemplateMethod"));
+        suite.add(new TestCaseTest("testResult"));
+        suite.add(new TestCaseTest("testFailedResultFormatting"));
+        suite.add(new TestCaseTest("testFailedResult"));
+        suite.add(new TestCaseTest("testSuite"));
+        suite.add(new TestCaseTest("testPassingSuite"));
+        return suite;
+    }
 }

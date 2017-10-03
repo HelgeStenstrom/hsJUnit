@@ -14,8 +14,6 @@ public class TestCase {
         this.name = name;
     }
 
-    void runParent(String name) {
-    }
 
     public void methodsOfTest() {
         Method[] myMethods = getClass().getDeclaredMethods();
@@ -25,8 +23,7 @@ public class TestCase {
 
     public void tearDown() {}
 
-    TestResult run() {
-        TestResult result = new TestResult();
+    void run(TestResult result) {
         result.testStarted();
         setUp();
         try {
@@ -34,23 +31,9 @@ public class TestCase {
         }
         catch (Throwable e) {
             result.testFailed();
+            e.printStackTrace();
         }
         tearDown();
-        return result;
-    }
-
-    TestResult run(TestResult result) {
-        result = new TestResult();
-        result.testStarted();
-        setUp();
-        try {
-            runMethod();
-        }
-        catch (Throwable e) {
-            result.testFailed();
-        }
-        tearDown();
-        return result;
     }
 
     private void runMethod() throws Throwable {
