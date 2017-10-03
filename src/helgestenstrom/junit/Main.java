@@ -16,7 +16,10 @@ package helgestenstrom.junit;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(allTests().run().summary());
+        TestResult result = new TestResult();
+        //System.out.println(allTests().run().summary());
+        allTests().run(result);
+        System.out.println(result.summary());
     }
 
     static TestSuite allTests() {

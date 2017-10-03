@@ -10,11 +10,9 @@ public class TestSuite {
         tests.add(test);
     }
 
-    public TestResult run() {
-        TestResult result = new TestResult();
+    public void run(TestResult result) {
         for (TestCase test: tests) {
             test.run(result);
         }
-        return result;
     }
 }
