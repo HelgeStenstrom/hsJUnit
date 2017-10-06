@@ -1,5 +1,20 @@
 package helgestenstrom.junit;
 
+// Done: Invoke test method
+// Done: Invoke setUp first
+// Done: Invoke tearDown afterward
+// TODO: Invoke tearDown even if the test method fails
+// TODO: Run multiple tests
+// Done: Report collected results
+// Done: Log string in WasRun
+// TODO: Catch and report setUp errors
+
+// TODO: Only print stack trace when there is a problem.
+// TODO: Run passing tests silently
+// TODO: Count Faults and Errors separately.
+
+
+
 public class TestCaseTest extends TestCase {
 
     TestResult result;
