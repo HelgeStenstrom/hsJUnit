@@ -11,7 +11,7 @@ package helgestenstrom.junit;
 
 // Done: Check result by counts, not by summary.
 // TODO: Count Faults and Errors separately.
-// TODO: Test AssertThat
+// Done: Test AssertThat
 // TODO: AssertEqualStrings
 // TODO: Only print stack trace when there is a problem.
 // TODO: Run passing tests silently
@@ -109,5 +109,27 @@ public class TestCaseTest extends TestCase {
         assertThat("5 run, 2 failed".equals(result.summary()), "running one passing, one failing test.");
     }
 
+    public void testPassingAssertion() {
+        try {
+            assertThat(true);
+        }
+        catch (Throwable e) {
+            throw e;
+        }
+    }
+
+    public void testFailingAssertion() {
+        boolean itDidThrow = false;
+        try {
+            assertThat(false);
+        }
+        catch (AssertionError e) {
+            itDidThrow = true;
+        }
+
+        if (! itDidThrow)
+            throw new AssertionError("Missing expected AssertionError");
+
+    }
 
 }
