@@ -9,11 +9,12 @@ package helgestenstrom.junit;
 // Done: Log string in WasRun
 // TODO: Catch and report setUp errors
 
-// TODO: Only print stack trace when there is a problem.
-// TODO: Run passing tests silently
+// Done: Check result by counts, not by summary.
 // TODO: Count Faults and Errors separately.
 // TODO: Test AssertThat
 // TODO: AssertEqualStrings
+// TODO: Only print stack trace when there is a problem.
+// TODO: Run passing tests silently
 
 
 
@@ -60,19 +61,22 @@ public class TestCaseTest extends TestCase {
     public void testResult() {
         TestCase test = new WasRun(("testMethod"));
         test.run(result);
-        assertThat("1 run, 0 failed".equals(result.summary()));
+        assertThat(1 == result.getRunCount());
+        assertThat(0 == result.getFailureCount());
     }
 
     public void testFailedResultFormatting() {
         result.testStarted();
         result.testFailed();
-        assertThat("1 run, 1 failed".equals(result.summary()), "testFailedResultFormatting");
+        assertThat(1 == result.getRunCount());
+        assertThat(1 == result.getFailureCount());
     }
 
     public void testFailedResult() {
         TestCase test = new WasRun("testBrokenMethod");
         test.run(result);
-        assertThat("1 run, 1 failed".equals(result.summary()));
+        assertThat(1 == result.getRunCount());
+        assertThat(1 == result.getFailureCount());
     }
 
     public void testSuite() {
@@ -80,7 +84,8 @@ public class TestCaseTest extends TestCase {
         suite.add(new WasRun("testMethod"));
         suite.add(new WasRun("testBrokenMethod"));
         suite.run(result);
-        assertThat("2 run, 1 failed".equals(result.summary()), "running one passing, one failing test.");
+        assertThat(2 == result.getRunCount());
+        assertThat(1 == result.getFailureCount());
     }
 
     public void testPassingSuite() {
@@ -89,7 +94,20 @@ public class TestCaseTest extends TestCase {
         suite.add(new WasRun("testMethod"));
     //        TestResult result = suite.run();
         suite.run(result);
-        assertThat("2 run, 0 failed".equals(result.summary()), "running two passing tests.");
+        assertThat(2 == result.getRunCount());
+        assertThat(0 == result.getFailureCount());
     }
+
+    public void testFormattingOfResults() {
+        TestSuite suite = new TestSuite();
+        suite.add(new WasRun("testMethod"));
+        suite.add(new WasRun("testMethod"));
+        suite.add(new WasRun("testMethod"));
+        suite.add(new WasRun("testBrokenMethod"));
+        suite.add(new WasRun("testBrokenMethod"));
+        suite.run(result);
+        assertThat("5 run, 2 failed".equals(result.summary()), "running one passing, one failing test.");
+    }
+
 
 }

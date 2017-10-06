@@ -22,6 +22,7 @@ public class Main {
         suite.add(new TestCaseTest("testFailedResult"));
         suite.add(new TestCaseTest("testSuite"));
         suite.add(new TestCaseTest("testPassingSuite"));
+        suite.add(new TestCaseTest("testFormattingOfResults"));
         return suite;
     }
 }

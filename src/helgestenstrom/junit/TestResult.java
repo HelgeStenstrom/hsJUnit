@@ -14,9 +14,9 @@ public class TestResult {
         return errorCount;
     }
 
-    int runCount = 0;
-    int failureCount = 0;
-    int errorCount = 0;
+    private int runCount = 0;
+    private int failureCount = 0;
+    private int errorCount = 0;
 
     void testStarted() {
         runCount += 1;
