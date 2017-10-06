@@ -12,6 +12,9 @@ package helgestenstrom.junit;
 // TODO: Only print stack trace when there is a problem.
 // TODO: Run passing tests silently
 // TODO: Count Faults and Errors separately.
+// TODO: Test AssertThat
+// TODO: AssertEqualStrings
+
 
 
 
